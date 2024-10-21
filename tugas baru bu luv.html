@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML DOM Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+            transition: all 0.5s ease;
+        }
+        .form-group {
+            margin-bottom: 10px;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <h1>HTML DOM Concepts</h1>
+
+    <!-- Document and Element -->
+    <p id="document-example">This text will be changed dynamically using the <strong>document</strong> object.</p>
+
+    <!-- Method (getElementById) -->
+    <button onclick="changeText()">Change Text</button>
+
+    <!-- Forms -->
+    <h2>Form Example</h2>
+    <form id="myForm">
+        <div class="form-group">
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <button type="submit">Submit</button>
+    </form>
+    <p id="form-output" class="hidden"></p>
+
+    <!-- CSS -->
+    <h2>CSS and Animation Example</h2>
+    <div id="animateBox" class="box"></div>
+    <button onclick="startAnimation()">Animate Box</button>
+
+    <!-- Events and Event Listener -->
+    <h2>Event Listener Example</h2>
+    <button id="eventBtn">Click me</button>
+    <p id="eventOutput"></p>
+
+    <!-- Navigation -->
+    <h2>Navigation Example</h2>
+    <button onclick="navigate()">Go to W3Schools</button>
+
+    <!-- Nodes, Collections, and Node List -->
+    <h2>Node List Example</h2>
+    <ul id="itemList">
+        <li>Item 1</li>
+        <li>Item 2</li>
+        <li>Item 3</li>
+    </ul>
+    <button onclick="countItems()">Count List Items</button>
+    <p id="itemCount"></p>
+
+    <script>
+        // Document and Method Example
+        function changeText() {
+            document.getElementById("document-example").innerText = "Text changed using document.getElementById()!";
+        }
+
+        // Form Example
+        const form = document.getElementById('myForm');
+        form.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = form.name.value;
+            const email = form.email.value;
+            const output = document.getElementById('form-output');
+            output.innerText = `Submitted Name: ${name}, Email: ${email}`;
+            output.classList.remove('hidden');
+        });
+
+        // CSS and Animation Example
+        function startAnimation() {
+            const box = document.getElementById("animateBox");
+            box.style.backgroundColor = box.style.backgroundColor === "blue" ? "red" : "blue";
+            box.style.transform = "translateX(100px)";
+        }
+
+        // Event Listener Example
+        document.getElementById("eventBtn").addEventListener("click", function() {
+            document.getElementById("eventOutput").innerText = "Button clicked!";
+        });
+
+        // Navigation Example
+        function navigate() {
+            window.location.href = "https://www.w3schools.com";
+        }
+
+        // Node, Collections, and Node List Example
+        function countItems() {
+            const items = document.querySelectorAll("#itemList li");
+            document.getElementById("itemCount").innerText = `There are ${items.length} items in the list.`;
+        }
+    </script>
+</body>
+</html>
